@@ -381,7 +381,8 @@ function createChannel() {
 ## Call the script to isntall and instantiate a chaincode on the channel
 function deployCC() {
 
-  scripts/deployCC.sh $CHANNEL_NAME $CC_SRC_LANGUAGE $VERSION $CLI_DELAY $MAX_RETRY $VERBOSE
+  #scripts/deployCC.sh $CHANNEL_NAME $CC_SRC_LANGUAGE $VERSION $CLI_DELAY $MAX_RETRY $VERBOSE
+  scripts/deployCT2.sh $CHANNEL_NAME $CC_SRC_LANGUAGE $VERSION $CLI_DELAY $MAX_RETRY $VERBOSE
 
   if [ $? -ne 0 ]; then
     echo "ERROR !!! Deploying chaincode failed"
@@ -415,6 +416,7 @@ function networkDown() {
 
     # remove channel and script artifacts
     rm -rf channel-artifacts log.txt fabcar.tar.gz fabcar
+    rm -rf channel-artifacts log.txt ct2.tar.gz ct2
 
   fi
 }
